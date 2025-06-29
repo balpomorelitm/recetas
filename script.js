@@ -11,6 +11,57 @@ const modalClose = document.getElementById('modal-close');
 
 let currentRecipes = recipes;
 
+function getIngredientEmoji(ingredient) {
+  const lower = ingredient.toLowerCase();
+  const map = {
+    'huevo': '🥚',
+    'huevos': '🥚',
+    'pollo': '🍗',
+    'conejo': '🍖',
+    'jamón': '🥓',
+    'jamon': '🥓',
+    'arroz': '🍚',
+    'tomate': '🍅',
+    'cebolla': '🧅',
+    'ajo': '🧄',
+    'aceituna': '🫒',
+    'pimiento': '🫑',
+    'zanahoria': '🥕',
+    'patata': '🥔',
+    'patatas': '🥔',
+    'espinacas': '🥬',
+    'chocolate': '🍫',
+    'limón': '🍋',
+    'lima': '🍋',
+    'naranja': '🍊',
+    'manzana': '🍎',
+    'pera': '🍐',
+    'fresa': '🍓',
+    'fresas': '🍓',
+    'plátano': '🍌',
+    'platano': '🍌',
+    'piña': '🍍',
+    'mantequilla': '🧈',
+    'leche': '🥛',
+    'queso': '🧀',
+    'yogur': '🍦',
+    'almendra': '🥜',
+    'almendras': '🥜',
+    'nueces': '🥜',
+    'garbanzos': '🫘',
+    'champiñones': '🍄',
+    'setas': '🍄',
+    'miel': '🍯',
+    'vino': '🍾'
+  };
+  for (const key in map) {
+    if (lower.includes(key)) {
+      return map[key];
+    }
+  }
+  return '';
+}
+
 function createCard(recipe) {
   const card = document.createElement('div');
   card.className = 'recipe-card';
@@ -39,7 +90,8 @@ export function displayRecipeDetails(recipe) {
   modalIngredients.innerHTML = '';
   recipe.ingredients.forEach(i => {
     const li = document.createElement('li');
-    li.textContent = i;
+    const emoji = getIngredientEmoji(i);
+    li.textContent = emoji ? `${i} ${emoji}` : i;
     modalIngredients.appendChild(li);
   });
   modalInstructions.innerHTML = '';
