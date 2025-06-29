@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Recipe Book</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>My Recipe Book</h1>
+  </header>
+
+  <div id="filters">
+    <input type="search" id="search-box" placeholder="Search for recipes...">
+    <div id="category-buttons"></div>
+  </div>
+
+  <main id="recipe-container"></main>
+
+  <div id="recipe-modal" class="modal hidden">
+    <div class="modal-content">
+      <span id="modal-close" class="close">&times;</span>
+      <h2 id="modal-title"></h2>
+      <h3>Ingredients</h3>
+      <ul id="modal-ingredients"></ul>
+      <h3>Instructions</h3>
+      <ol id="modal-instructions"></ol>
+    </div>
+  </div>
+</body>
+</html>
