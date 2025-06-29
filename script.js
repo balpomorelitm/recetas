@@ -14,10 +14,13 @@ let currentRecipes = recipes;
 function createCard(recipe) {
   const card = document.createElement('div');
   card.className = 'recipe-card';
+  const tags = recipe.tags
+    .map(tag => `<span>${tag}</span>`) 
+    .join('');
   card.innerHTML = `
-    <h3>${recipe.title}</h3>
-    <p>${recipe.category}</p>
-    <p class="tags">${recipe.tags.join(' ')}</p>
+    <h2>${recipe.title}</h2>
+    <p class="card-category">${recipe.category}</p>
+    <div class="card-tags">${tags}</div>
   `;
   card.addEventListener('click', () => displayRecipeDetails(recipe));
   return card;
