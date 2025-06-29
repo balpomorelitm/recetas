@@ -33,21 +33,25 @@ const recipes = [
     title: "Schiacciata",
     tags: ["#Italia", "#Vegano", "#Vegetariano", "#Pan", "#Aperitivo"],
     ingredients: [
-      "500 g de harina de fuerza",
-      "400 ml de agua tibia",
-      "10 g de levadura fresca",
-      "10 g de sal",
-      "25 ml de aceite de oliva",
-      "Sal gorda y romero"
+      "400 g de patatas medianas",
+      "200 g de harina",
+      "10 g de impulsor o levadura tipo Royal",
+      "Unos 300 ml de agua",
+      "Un par de ramitas de romero fresco",
+      "Aceite de oliva virgen extra",
+      "1 cucharadita de sal",
+      "Parmesano rallado al gusto (opcional)"
     ],
     instructions: [
-      "Disuelve la levadura en el agua.",
-      "Mezcla harina y sal. Vierte el agua con levadura y mezcla.",
-      "Cubre y deja reposar 1 hora.",
-      "Vierte la masa en una bandeja de horno con aceite y extiéndela.",
-      "Deja levar 1 hora. Precalienta el horno a 220°C.",
-      "Rocía con aceite, haz hoyuelos con los dedos y espolvorea sal y romero.",
-      "Hornea 20-25 minutos."
+      "Calentar el horno a 200 grados con ventilador (si el horno tiene). Cubrir una bandeja con papel de horno.",
+      "Batir en un bol el agua a temperatura ambiente con la sal y tres cucharadas de aceite con un batidor de varillas. La sal debe disolverse del todo, y la mezcla, emulsionar ligeramente.",
+      "Añadir la harina tamizada pasada por un colador poco a poco, y seguimos mezclando hasta que quede una pasta cremosa.",
+      "Lavar bien las patatas y cortarlas en láminas finas con una mandolina o un cuchillo. Añadirlas a la masa y mezclar.",
+      "Verter la mezcla en la bandeja y repartir bien. Repartir hojas de romero por encima y el parmesano, si se usa.",
+      "Hornear entre 45 y 50 minutos o hasta que esté bien dorado.",
+      "Consejo: Cuando lleve media hora, conviene girar la bandeja para que se dore de manera uniforme.",
+      "Sacar del horno, pintar con aceite de oliva y servir inmediatamente.",
+      "Consejo: La schiacciata se puede rematar con unas escamas de sal, y tomarla con embutido, burrata, verduras a la plancha, ensalada o como simple aperitivo."
     ]
   },
   {
