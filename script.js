@@ -3,6 +3,7 @@ import recipes from './recipes.js';
 const recipeContainer = document.getElementById('recipe-container');
 const searchBox = document.getElementById('search-box');
 const categoryButtonsDiv = document.getElementById('category-buttons');
+const tagSidebar = document.getElementById('tag-sidebar');
 const modal = document.getElementById('recipe-modal');
 const modalTitle = document.getElementById('modal-title');
 const modalIngredients = document.getElementById('modal-ingredients');
@@ -136,6 +137,15 @@ function setupCategories() {
   });
 }
 
+function setupTags() {
+  const tags = [...new Set(recipes.flatMap(r => r.tags))].sort((a, b) => a.localeCompare(b));
+  tags.forEach(tag => {
+    const span = document.createElement('span');
+    span.textContent = tag;
+    tagSidebar.appendChild(span);
+  });
+}
+
 searchBox.addEventListener('input', (e) => {
   const term = e.target.value.toLowerCase();
   const filtered = currentRecipes.filter(r => {
@@ -151,3 +161,4 @@ searchBox.addEventListener('input', (e) => {
 // Initial load
 setupCategories();
 loadRecipes(recipes);
+setupTags();
