@@ -76,4 +76,6 @@ if (recipe) {
     <h2>Instrucciones</h2>
     <ol>${instructions}</ol>
   `;
+  const img = container.querySelector('.recipe-image');
+  img.addEventListener('error', () => img.remove());
 }

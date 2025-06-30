@@ -95,6 +95,8 @@ function createCard(recipe) {
       <div class="card-tags">${tags}</div>
     </div>
   `;
+  const img = card.querySelector('img');
+  img.addEventListener('error', () => img.remove());
   card.addEventListener('click', () => {
     window.location.href = `recipe.html?id=${recipe.slug}`;
   });
