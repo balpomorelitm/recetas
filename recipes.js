@@ -2,6 +2,11 @@ const recipes = [
   {
     category: "Platos Principales",
     title: "Paella Valenciana",
+    slug: "paella-valenciana",
+    image: "images/paella-valenciana.jpg",
+    prepTime: "1 hr 30 min",
+    servings: "4 personas",
+    difficulty: "Media",
     tags: ["#España", "#PlatoPrincipal", "#Arroz"],
     ingredients: [
       "400 g de arroz bomba",
@@ -31,6 +36,11 @@ const recipes = [
   {
     category: "Platos Principales",
     title: "Schiacciata",
+    slug: "schiacciata",
+    image: "images/schiacciata.jpg",
+    prepTime: "1 hr",
+    servings: "4 personas",
+    difficulty: "Fácil",
     tags: ["#Italia", "#Vegano", "#Vegetariano", "#Pan", "#Aperitivo"],
     ingredients: [
       "400 g de patatas medianas",
@@ -57,6 +67,11 @@ const recipes = [
   {
     category: "Platos Principales",
     title: "Pisto Manchego",
+    slug: "pisto-manchego",
+    image: "images/pisto-manchego.jpg",
+    prepTime: "1 hr",
+    servings: "4 personas",
+    difficulty: "Fácil",
     tags: ["#España", "#Vegano", "#Vegetariano", "#PrimerPlato", "#Guarnición"],
     ingredients: [
       "2 pimientos verdes",
@@ -80,6 +95,11 @@ const recipes = [
   {
     category: "Platos Principales",
     title: "Arroz Frito con Pollo, Verduras y Salsas Negras",
+    slug: "arroz-frito-con-pollo-verduras-y-salsas-negras",
+    image: "images/arroz-frito-con-pollo-verduras-y-salsas-negras.jpg",
+    prepTime: "45 min",
+    servings: "4 personas",
+    difficulty: "Media",
     tags: ["#Asia", "#PlatoPrincipal", "#Arroz", "#Pollo"],
     ingredients: [
       "2 tazas de arroz cocido (del día anterior)",
@@ -112,6 +132,11 @@ const recipes = [
   {
     category: "Platos Principales",
     title: "Tom Kha Kai (Sopa Tailandesa de Coco y Pollo)",
+    slug: "tom-kha-kai-sopa-tailandesa-de-coco-y-pollo",
+    image: "images/tom-kha-kai-sopa-tailandesa-de-coco-y-pollo.jpg",
+    prepTime: "40 min",
+    servings: "4 personas",
+    difficulty: "Media",
     tags: ["#Tailandia", "#Sopa", "#PlatoPrincipal", "#Pollo", "#SinGluten"],
     ingredients: [
       "Con concentrado: 1 sobre de concentrado Tom Kha",
@@ -150,6 +175,11 @@ const recipes = [
   {
     category: "Platos Principales",
     title: "Empanada de Atún",
+    slug: "empanada-de-atun",
+    image: "images/empanada-de-atun.jpg",
+    prepTime: "1 hr",
+    servings: "6 personas",
+    difficulty: "Media",
     tags: ["#España", "#Pescado", "#PlatoPrincipal", "#Aperitivo"],
     ingredients: [
       "2 láminas de masa de empanada",
@@ -176,6 +206,11 @@ const recipes = [
   {
     category: "Tapas y Entrantes",
     title: "Croquetas de Jamón",
+    slug: "croquetas-de-jamon",
+    image: "images/croquetas-de-jamon.jpg",
+    prepTime: "1 hr 30 min",
+    servings: "6 personas",
+    difficulty: "Media",
     tags: ["#España", "#Tapa", "#Carne", "#Fritura"],
     ingredients: [
       "100 g de jamón serrano picado",
@@ -201,6 +236,11 @@ const recipes = [
   {
     category: "Tapas y Entrantes",
     title: "Ensaladilla Rusa",
+    slug: "ensaladilla-rusa",
+    image: "images/ensaladilla-rusa.jpg",
+    prepTime: "40 min",
+    servings: "4 personas",
+    difficulty: "Fácil",
     tags: ["#España", "#Tapa", "#PrimerPlato", "#Pescado"],
     ingredients: [
       "4 patatas medianas",
@@ -223,6 +263,11 @@ const recipes = [
   {
     category: "Tapas y Entrantes",
     title: "Tortilla de Patatas",
+    slug: "tortilla-de-patatas",
+    image: "images/tortilla-de-patatas.jpg",
+    prepTime: "45 min",
+    servings: "4 personas",
+    difficulty: "Media",
     tags: ["#España", "#Tapa", "#PrimerPlato", "#Vegetariano", "#Huevo"],
     ingredients: [
       "1 kg de patatas",
@@ -244,6 +289,11 @@ const recipes = [
   {
     category: "Tapas y Entrantes",
     title: "Hummus",
+    slug: "hummus",
+    image: "images/hummus.jpg",
+    prepTime: "10 min",
+    servings: "4 personas",
+    difficulty: "Fácil",
     tags: ["#OrienteMedio", "#Tapa", "#Vegano", "#Vegetariano", "#Untable", "#Legumbres"],
     ingredients: [
       "400 g de garbanzos cocidos",
@@ -264,6 +314,11 @@ const recipes = [
   {
     category: "Tapas y Entrantes",
     title: "Paté de Almendras y Champiñones",
+    slug: "pate-de-almendras-y-champinones",
+    image: "images/pate-de-almendras-y-champinones.jpg",
+    prepTime: "20 min",
+    servings: "4 personas",
+    difficulty: "Fácil",
     tags: ["#Fusión", "#Tapa", "#Vegano", "#Vegetariano", "#Untable"],
     ingredients: [
       "150 g almendras crudas (remojadas 4h)",
@@ -285,6 +340,11 @@ const recipes = [
   {
     category: "Tapas y Entrantes",
     title: "Sobrasada Vegana de Tomate Seco",
+    slug: "sobrasada-vegana-de-tomate-seco",
+    image: "images/sobrasada-vegana-de-tomate-seco.jpg",
+    prepTime: "15 min",
+    servings: "4 personas",
+    difficulty: "Fácil",
     tags: ["#España", "#Tapa", "#Vegano", "#Vegetariano", "#Untable"],
     ingredients: [
       "150 g tomates secos",
@@ -305,6 +365,11 @@ const recipes = [
   {
     category: "Tapas y Entrantes",
     title: "Pimientos Asados",
+    slug: "pimientos-asados",
+    image: "images/pimientos-asados.jpg",
+    prepTime: "1 hr",
+    servings: "4 personas",
+    difficulty: "Fácil",
     tags: ["#España", "#Tapa", "#Guarnición", "#Vegano", "#Vegetariano"],
     ingredients: [
       "4 pimientos rojos grandes",
@@ -323,6 +388,11 @@ const recipes = [
   {
     category: "Tapas y Entrantes",
     title: "Garbanzos Salteados con Espinacas",
+    slug: "garbanzos-salteados-con-espinacas",
+    image: "images/garbanzos-salteados-con-espinacas.jpg",
+    prepTime: "30 min",
+    servings: "2 personas",
+    difficulty: "Fácil",
     tags: ["#España", "#Tapa", "#PrimerPlato", "#Vegano", "#Vegetariano", "#Legumbres"],
     ingredients: [
       "400 g garbanzos cocidos",
@@ -341,6 +411,11 @@ const recipes = [
   {
     category: "Tapas y Entrantes",
     title: "Untable de Zanahoria Asada",
+    slug: "untable-de-zanahoria-asada",
+    image: "images/untable-de-zanahoria-asada.jpg",
+    prepTime: "1 hr 15 min",
+    servings: "4 personas",
+    difficulty: "Fácil",
     tags: ["#Fusión", "#Tapa", "#Vegano", "#Vegetariano", "#Untable"],
     ingredients: [
       "300 g zanahoria",
@@ -364,6 +439,11 @@ const recipes = [
   {
     category: "Tapas y Entrantes",
     title: "Mutabal (Crema de Berenjenas)",
+    slug: "mutabal-crema-de-berenjenas",
+    image: "images/mutabal-crema-de-berenjenas.jpg",
+    prepTime: "50 min",
+    servings: "4 personas",
+    difficulty: "Fácil",
     tags: ["#OrienteMedio", "#Tapa", "#Vegetariano", "#Untable"],
     ingredients: [
       "2-3 berenjenas",
@@ -385,6 +465,11 @@ const recipes = [
   {
     category: "Postres",
     title: "Tarta de Finlandia (Pannukakku)",
+    slug: "tarta-de-finlandia-pannukakku",
+    image: "images/tarta-de-finlandia-pannukakku.jpg",
+    prepTime: "50 min",
+    servings: "6 personas",
+    difficulty: "Fácil",
     tags: ["#Finlandia", "#Postre", "#Vegetariano", "#Horno"],
     ingredients: [
       "1 litro de leche",
@@ -409,6 +494,11 @@ const recipes = [
   {
     category: "Postres",
     title: "Tarta Fácil de Yogur",
+    slug: "tarta-facil-de-yogur",
+    image: "images/tarta-facil-de-yogur.jpg",
+    prepTime: "1 hr",
+    servings: "6 personas",
+    difficulty: "Fácil",
     tags: ["#España", "#Postre", "#Vegetariano", "#Horno", "#SinGluten"],
     ingredients: [
       "500 g yogur",
@@ -428,6 +518,11 @@ const recipes = [
   {
     category: "Postres",
     title: "Crepes",
+    slug: "crepes",
+    image: "images/crepes.jpg",
+    prepTime: "30 min",
+    servings: "4 personas",
+    difficulty: "Fácil",
     tags: ["#Francia", "#Postre", "#Vegetariano"],
     ingredients: [
       "250 g harina",
@@ -449,6 +544,11 @@ const recipes = [
   {
     category: "Postres",
     title: "Tarta de Teo de Limón",
+    slug: "tarta-de-teo-de-limon",
+    image: "images/tarta-de-teo-de-limon.jpg",
+    prepTime: "30 min",
+    servings: "8 personas",
+    difficulty: "Fácil",
     tags: ["#Fusión", "#Postre", "#Vegetariano", "#SinHorno"],
     ingredients: [
       "800 g nata para montar",
@@ -468,6 +568,11 @@ const recipes = [
   {
     category: "Desayunos",
     title: "Chía con Leche y Canela",
+    slug: "chia-con-leche-y-canela",
+    image: "images/chia-con-leche-y-canela.jpg",
+    prepTime: "5 min + reposo",
+    servings: "1 persona",
+    difficulty: "Fácil",
     tags: ["#Internacional", "#Desayuno", "#Postre", "#Vegano", "#Vegetariano", "#SinGluten", "#SinHorno"],
     ingredients: [
       "3 cdas. semillas de chía",

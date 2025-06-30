@@ -3,16 +3,27 @@ import recipes from './recipes.js';
 const recipeContainer = document.getElementById('recipe-container');
 const searchBox = document.getElementById('search-box');
 const categoryButtonsDiv = document.getElementById('category-buttons');
+const sortSelect = document.getElementById("sort-select");
 const tagSidebar = document.getElementById('tag-sidebar');
-const modal = document.getElementById('recipe-modal');
-const modalTitle = document.getElementById('modal-title');
-const modalIngredients = document.getElementById('modal-ingredients');
-const modalInstructions = document.getElementById('modal-instructions');
-const modalClose = document.getElementById('modal-close');
 
 let activeCategory = null;
 let activeTag = null;
+let sortOption = "az";
 let currentRecipes = recipes;
+
+function parseTime(str) {
+  const hrs = /([0-9]+)\s*hr/.exec(str);
+  const mins = /([0-9]+)\s*min/.exec(str);
+  return (hrs ? parseInt(hrs[1]) * 60 : 0) + (mins ? parseInt(mins[1]) : 0);
+}
+
+function sortCurrentRecipes() {
+  if (sortOption === 'time') {
+    currentRecipes.sort((a, b) => parseTime(a.prepTime) - parseTime(b.prepTime));
+  } else {
+    currentRecipes.sort((a, b) => a.title.localeCompare(b.title));
+  }
+}
 
 function getIngredientEmoji(ingredient) {
   const lower = ingredient.toLowerCase();
@@ -69,14 +80,24 @@ function createCard(recipe) {
   const card = document.createElement('div');
   card.className = 'recipe-card';
   const tags = recipe.tags
-    .map(tag => `<span>${tag}</span>`) 
+    .map(tag => `<span>${tag}</span>`)
     .join('');
   card.innerHTML = `
-    <h2>${recipe.title}</h2>
-    <p class="card-category">${recipe.category}</p>
-    <div class="card-tags">${tags}</div>
+    <img src="${recipe.image}" alt="${recipe.title}">
+    <div class="card-body">
+      <h2>${recipe.title}</h2>
+      <p class="card-category">${recipe.category}</p>
+      <div class="card-meta">
+        <span>⏱ ${recipe.prepTime}</span>
+        <span>🍽 ${recipe.servings}</span>
+        <span>⭐ ${recipe.difficulty}</span>
+      </div>
+      <div class="card-tags">${tags}</div>
+    </div>
   `;
-  card.addEventListener('click', () => displayRecipeDetails(recipe));
+  card.addEventListener('click', () => {
+    window.location.href = `recipe.html?id=${recipe.slug}`;
+  });
   return card;
 }
 
@@ -88,33 +109,6 @@ export function loadRecipes(recipeArray) {
   });
 }
 
-export function displayRecipeDetails(recipe) {
-  modalTitle.textContent = recipe.title;
-  modalIngredients.innerHTML = '';
-  recipe.ingredients.forEach(i => {
-    const li = document.createElement('li');
-    const emoji = getIngredientEmoji(i);
-    li.textContent = emoji ? `${i} ${emoji}` : i;
-    modalIngredients.appendChild(li);
-  });
-  modalInstructions.innerHTML = '';
-  recipe.instructions.forEach(step => {
-    const li = document.createElement('li');
-    li.textContent = step;
-    modalInstructions.appendChild(li);
-  });
-  modal.classList.remove('hidden');
-}
-
-modalClose.addEventListener('click', () => {
-  modal.classList.add('hidden');
-});
-
-modal.addEventListener('click', (e) => {
-  if (e.target === modal) {
-    modal.classList.add('hidden');
-  }
-});
 
 function setupCategories() {
   const categories = [...new Set(recipes.map(r => r.category))];
@@ -173,11 +167,18 @@ function filterRecipes() {
     ));
   }
   currentRecipes = filtered;
-  loadRecipes(filtered);
+  sortCurrentRecipes();
+  loadRecipes(currentRecipes);
 }
 
 searchBox.addEventListener('input', () => {
   filterRecipes();
+});
+
+sortSelect.addEventListener('change', () => {
+  sortOption = sortSelect.value;
+  sortCurrentRecipes();
+  loadRecipes(currentRecipes);
 });
 
 // Initial load

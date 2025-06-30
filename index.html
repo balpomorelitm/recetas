@@ -17,6 +17,10 @@
 
   <div id="filters">
     <input type="search" id="search-box" placeholder="Buscar recetas...">
+    <select id="sort-select">
+      <option value="az">Ordenar A-Z</option>
+      <option value="time">Ordenar por Tiempo</option>
+    </select>
     <div id="category-buttons"></div>
   </div>
 
@@ -25,15 +29,6 @@
     <aside id="tag-sidebar"></aside>
   </div>
 
-  <div id="recipe-modal" class="modal hidden">
-    <div class="modal-content">
-      <span id="modal-close" class="modal-close">&times;</span>
-      <h2 id="modal-title"></h2>
-      <h3>Ingredientes</h3>
-      <ul id="modal-ingredients"></ul>
-      <h3>Instrucciones</h3>
-      <ol id="modal-instructions"></ol>
-    </div>
-  </div>
+
 </body>
 </html>
