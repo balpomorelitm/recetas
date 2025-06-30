@@ -55,6 +55,22 @@ const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
 const recipe = recipes.find(r => r.slug === id);
 
+async function fetchRecipeImage(title) {
+  const response = await fetch(`https://source.unsplash.com/featured/?${encodeURIComponent(title)}`);
+  return response.url;
+}
+
+async function getImageUrl(recipe) {
+  if (recipe.image) {
+    return recipe.image;
+  }
+  try {
+    return await fetchRecipeImage(recipe.title);
+  } catch (e) {
+    return '';
+  }
+}
+
 if (recipe) {
   document.title = recipe.title;
   document.getElementById('recipe-title').textContent = recipe.title;
@@ -63,9 +79,11 @@ if (recipe) {
   document.getElementById('recipe-difficulty').textContent = recipe.difficulty;
 
   const img = document.getElementById('recipe-image');
-  img.src = recipe.image;
   img.alt = `Foto de ${recipe.title}`;
   img.addEventListener('error', () => img.remove());
+  getImageUrl(recipe).then(url => {
+    if (url) img.src = url;
+  });
 
   const ingredientsList = document.getElementById('recipe-ingredients');
   ingredientsList.innerHTML = recipe.ingredients.map(i => {
