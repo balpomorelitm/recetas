@@ -16,29 +16,30 @@
   source of truth for color, typography, and space.
 */
 :root {
-  /* Colors - A palette that is warm, inviting, and easy on the eyes. */
-  --color-background: #FDFDFD;       /* A soft, almost-white for the main background. */
-  --color-surface: #FFFFFF;         /* The pristine white for card and modal surfaces. */
-  --color-text-primary: #1a1a1a;   /* A dark, charcoal gray, not a harsh pure black. */
-  --color-text-secondary: #6b6b6b; /* A lighter gray for metadata and secondary text. */
-  --color-accent: #E85A4F;          /* A vibrant, warm red-orange for primary actions and highlights. */
-  --color-accent-hover: #D84A3F;   /* A slightly darker accent for hover states. */
-  --color-border: #EAEAEA;          /* A subtle border color. */
-  --color-overlay: rgba(26, 26, 26, 0.7); /* The modal overlay. Dark and semi-transparent. */
-  
-  /* Typography - The voice of our interface. */
-  --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  --font-family-display: 'Merriweather', serif; /* A classic serif for headings to add character. */
-  --font-base-size: 16px;
+  /* Colors - An earthy, warm, and appetizing palette. */
+  --color-background: #F4F1ED;       /* A soft, creamy off-white. */
+  --color-surface: #FFFFFF;         /* Pristine white for cards. */
+  --color-text-primary: #2C2A28;   /* A deep, rich brown-black for primary text. */
+  --color-text-secondary: #7A7570; /* A softer, muted brown for secondary text. */
+  --color-accent: #E55807;          /* A vibrant, energetic orange for actions. */
+  --color-accent-hover: #C04A06;   /* A deeper orange for hover states. */
+  --color-border: #E0DCD7;          /* A subtle border color that blends with the background. */
+  --color-overlay: rgba(44, 42, 40, 0.75); /* A slightly warmer modal overlay. */
 
-  /* Spacing & Sizing */
+  /* Typography - The new voice: bold, friendly, and clear. */
+  --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-family-display: 'Paytone One', sans-serif; /* A bold, fun font for major headings. */
+  --font-base-size: 17px; /* Slightly larger base size for better readability. */
+
+  /* Spacing & Sizing - More generous spacing for a cleaner look. */
   --spacing-unit: 8px;
   --container-width: 1200px;
 
-  /* Borders & Shadows - To create depth and separation. */
-  --border-radius: 12px;
-  --shadow-subtle: 0 2px 4px rgba(0,0,0,0.05);
-  --shadow-lifted: 0 10px 30px -5px rgba(0,0,0,0.1);
+  /* Borders & Shadows - Softer, more realistic shadows. */
+  --border-radius: 16px; /* A slightly larger, friendlier border radius. */
+  --shadow-subtle: 0 4px 10px rgba(0,0,0,0.04);
+  --shadow-lifted: 0 15px 35px -10px rgba(0,0,0,0.1);
+  --shadow-border: 0 0 0 1px var(--color-border);
 }
 
 /*
@@ -61,14 +62,15 @@ body {
   color: var(--color-text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.6;
+  line-height: 1.7; /* Increased line-height for better readability */
 }
 
 h1, h2, h3 {
   font-family: var(--font-family-display);
-  font-weight: 700;
+  font-weight: 400; /* Paytone One only has a regular weight */
   line-height: 1.2;
   margin-bottom: calc(var(--spacing-unit) * 2);
+  letter-spacing: 0.5px; /* Add slight letter spacing to display font */
 }
 
 /* For a better accessibility outline on focus */
@@ -94,6 +96,12 @@ header {
   margin-bottom: calc(var(--spacing-unit) * 4);
 }
 
+header h1 {
+  font-size: 3.5rem; /* Much larger */
+  color: var(--color-accent);
+  text-transform: uppercase;
+}
+
 .back-button {
   display: inline-block;
   margin-bottom: calc(var(--spacing-unit) * 2);
@@ -114,17 +122,23 @@ header {
 
 #search-box {
   font-size: 1rem;
-  padding: var(--spacing-unit) calc(var(--spacing-unit) * 2);
+  padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 2);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
-  min-width: 300px;
+  min-width: 350px;
+  transition: all 0.2s ease-in-out;
+}
+
+#search-box:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(229, 88, 7, 0.2);
 }
 
 #category-buttons button {
   font-family: var(--font-family-sans);
   font-size: 0.9rem;
   font-weight: 600;
-  padding: var(--spacing-unit) calc(var(--spacing-unit) * 2);
+  padding: var(--spacing-unit) calc(var(--spacing-unit) * 2.5);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
   background-color: var(--color-surface);
@@ -136,12 +150,14 @@ header {
 #category-buttons button:hover {
   background-color: var(--color-background);
   color: var(--color-text-primary);
+  transform: translateY(-2px);
 }
 
 #category-buttons button.active {
   background-color: var(--color-accent);
   color: var(--color-surface);
   border-color: var(--color-accent);
+  transform: translateY(0);
 }
 
 /* --- Layout with Sidebar --- */
@@ -194,12 +210,14 @@ header {
 .recipe-card {
   background-color: var(--color-surface);
   border-radius: var(--border-radius);
-  box-shadow: var(--shadow-subtle);
+  /* Combine shadows for a cleaner, crisper look */
+  box-shadow: var(--shadow-subtle), var(--shadow-border);
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
+  padding: calc(var(--spacing-unit) * 3);
 }
 
 .recipe-card img {
@@ -225,13 +243,16 @@ header {
 }
 
 .recipe-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lifted);
+  transform: translateY(-8px); /* More pronounced lift */
+  box-shadow: var(--shadow-lifted), var(--shadow-border);
 }
 
 .recipe-card h2 {
+  font-family: var(--font-family-sans);
   font-size: 1.5rem;
+  font-weight: 700;
   margin-bottom: var(--spacing-unit);
+  color: var(--color-text-primary);
 }
 
 .recipe-card .card-category {
