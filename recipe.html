@@ -6,13 +6,36 @@
   <title>Receta</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="print.css" media="print">
-  <script type="module" src="recipe-detail.js" defer></script>
 </head>
 <body>
-  <header>
-    <a href="index.html" class="back-button">&larr; Volver</a>
-    <h1 id="detail-title"></h1>
-  </header>
-  <main id="recipe-detail"></main>
+  <div class="recipe-page-container">
+    <a href="index.html" class="back-link">&larr; Volver</a>
+
+    <main class="recipe-detail-card">
+      <header class="recipe-header">
+        <h1 id="recipe-title">Título de la Receta</h1>
+        <div class="recipe-meta">
+          <span><i class="icon-time"></i> <span id="recipe-time"></span></span>
+          <span><i class="icon-servings"></i> <span id="recipe-servings"></span></span>
+          <span><i class="icon-difficulty"></i> <span id="recipe-difficulty"></span></span>
+        </div>
+      </header>
+
+      <img id="recipe-image" src="" alt="Foto de la receta" class="recipe-main-image">
+
+      <div class="recipe-body">
+        <aside class="ingredients-section">
+          <h2>Ingredientes</h2>
+          <ul id="recipe-ingredients"></ul>
+        </aside>
+        <section class="instructions-section">
+          <h2>Instrucciones</h2>
+          <ol id="recipe-instructions"></ol>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="recipe-detail.js"></script>
 </body>
 </html>
