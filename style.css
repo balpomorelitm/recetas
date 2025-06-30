@@ -154,7 +154,7 @@ header {
   height: fit-content;
 }
 
-#tag-sidebar span {
+#tag-sidebar button {
   display: inline-block;
   background-color: var(--color-surface);
   color: var(--color-text-secondary);
@@ -162,6 +162,15 @@ header {
   border-radius: calc(var(--border-radius) / 2);
   font-size: 0.8rem;
   margin: 0 calc(var(--spacing-unit) / 2) var(--spacing-unit) 0;
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#tag-sidebar button.active {
+  background-color: var(--color-accent);
+  color: var(--color-surface);
+  border-color: var(--color-accent);
 }
 
 /* --- Recipe Container & Cards --- */

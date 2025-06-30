@@ -10,6 +10,8 @@ const modalIngredients = document.getElementById('modal-ingredients');
 const modalInstructions = document.getElementById('modal-instructions');
 const modalClose = document.getElementById('modal-close');
 
+let activeCategory = null;
+let activeTag = null;
 let currentRecipes = recipes;
 
 function getIngredientEmoji(ingredient) {
@@ -120,18 +122,15 @@ function setupCategories() {
     const button = document.createElement('button');
     button.textContent = cat;
     button.addEventListener('click', () => {
-      const active = button.classList.toggle('active');
-      [...categoryButtonsDiv.children].forEach(btn => {
-        if (btn !== button) btn.classList.remove('active');
-      });
-      if (active) {
-        const filtered = recipes.filter(r => r.category === cat);
-        currentRecipes = filtered;
-        loadRecipes(filtered);
+      if (activeCategory === cat) {
+        activeCategory = null;
+        button.classList.remove('active');
       } else {
-        currentRecipes = recipes;
-        loadRecipes(recipes);
+        activeCategory = cat;
+        [...categoryButtonsDiv.children].forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
       }
+      filterRecipes();
     });
     categoryButtonsDiv.appendChild(button);
   });
@@ -140,25 +139,48 @@ function setupCategories() {
 function setupTags() {
   const tags = [...new Set(recipes.flatMap(r => r.tags))].sort((a, b) => a.localeCompare(b));
   tags.forEach(tag => {
-    const span = document.createElement('span');
-    span.textContent = tag;
-    tagSidebar.appendChild(span);
+    const button = document.createElement('button');
+    button.textContent = tag;
+    button.addEventListener('click', () => {
+      if (activeTag === tag) {
+        activeTag = null;
+        button.classList.remove('active');
+      } else {
+        activeTag = tag;
+        [...tagSidebar.children].forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+      }
+      filterRecipes();
+    });
+    tagSidebar.appendChild(button);
   });
 }
 
-searchBox.addEventListener('input', (e) => {
-  const term = e.target.value.toLowerCase();
-  const filtered = currentRecipes.filter(r => {
-    return (
+function filterRecipes() {
+  let filtered = recipes;
+  if (activeCategory) {
+    filtered = filtered.filter(r => r.category === activeCategory);
+  }
+  if (activeTag) {
+    filtered = filtered.filter(r => r.tags.includes(activeTag));
+  }
+  const term = searchBox.value.toLowerCase();
+  if (term) {
+    filtered = filtered.filter(r => (
       r.title.toLowerCase().includes(term) ||
       r.tags.join(' ').toLowerCase().includes(term) ||
       r.ingredients.join(' ').toLowerCase().includes(term)
-    );
-  });
+    ));
+  }
+  currentRecipes = filtered;
   loadRecipes(filtered);
+}
+
+searchBox.addEventListener('input', () => {
+  filterRecipes();
 });
 
 // Initial load
 setupCategories();
-loadRecipes(recipes);
 setupTags();
+filterRecipes();
