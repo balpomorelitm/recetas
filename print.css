@@ -1,0 +1,12 @@
+header, nav, footer, #filters, .back-button {
+  display: none !important;
+}
+
+body {
+  font-family: 'Times New Roman', serif;
+  color: #000;
+}
+
+.recipe-image {
+  max-width: 50%;
+}
