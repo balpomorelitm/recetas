@@ -11,6 +11,22 @@ let activeTag = null;
 let sortOption = "az";
 let currentRecipes = recipes;
 
+async function fetchRecipeImage(title) {
+  const response = await fetch(`https://source.unsplash.com/featured/?${encodeURIComponent(title)}`);
+  return response.url;
+}
+
+async function getImageUrl(recipe) {
+  if (recipe.image) {
+    return recipe.image;
+  }
+  try {
+    return await fetchRecipeImage(recipe.title);
+  } catch (e) {
+    return '';
+  }
+}
+
 function parseTime(str) {
   const hrs = /([0-9]+)\s*hr/.exec(str);
   const mins = /([0-9]+)\s*min/.exec(str);
@@ -83,7 +99,7 @@ function createCard(recipe) {
     .map(tag => `<span>${tag}</span>`)
     .join('');
   card.innerHTML = `
-    <img src="${recipe.image}" alt="${recipe.title}">
+    <img alt="${recipe.title}">
     <div class="card-body">
       <h2>${recipe.title}</h2>
       <p class="card-category">${recipe.category}</p>
@@ -97,6 +113,9 @@ function createCard(recipe) {
   `;
   const img = card.querySelector('img');
   img.addEventListener('error', () => img.remove());
+  getImageUrl(recipe).then(url => {
+    if (url) img.src = url;
+  });
   card.addEventListener('click', () => {
     window.location.href = `recipe.html?id=${recipe.slug}`;
   });
