@@ -57,25 +57,22 @@ const recipe = recipes.find(r => r.slug === id);
 
 if (recipe) {
   document.title = recipe.title;
-  document.getElementById('detail-title').textContent = recipe.title;
-  const container = document.getElementById('recipe-detail');
-  const ingredients = recipe.ingredients.map(i => {
-    const emoji = getIngredientEmoji(i);
-    return `<li>${emoji ? i + ' ' + emoji : i}</li>`;
-  }).join('');
-  const instructions = recipe.instructions.map(i => `<li>${i}</li>`).join('');
-  container.innerHTML = `
-    <img class="recipe-image" src="${recipe.image}" alt="${recipe.title}">
-    <div class="detail-meta">
-      <span>⏱ ${recipe.prepTime}</span>
-      <span>🍽 ${recipe.servings}</span>
-      <span>⭐ ${recipe.difficulty}</span>
-    </div>
-    <h2>Ingredientes</h2>
-    <ul>${ingredients}</ul>
-    <h2>Instrucciones</h2>
-    <ol>${instructions}</ol>
-  `;
-  const img = container.querySelector('.recipe-image');
+  document.getElementById('recipe-title').textContent = recipe.title;
+  document.getElementById('recipe-time').textContent = recipe.prepTime;
+  document.getElementById('recipe-servings').textContent = recipe.servings;
+  document.getElementById('recipe-difficulty').textContent = recipe.difficulty;
+
+  const img = document.getElementById('recipe-image');
+  img.src = recipe.image;
+  img.alt = `Foto de ${recipe.title}`;
   img.addEventListener('error', () => img.remove());
+
+  const ingredientsList = document.getElementById('recipe-ingredients');
+  ingredientsList.innerHTML = recipe.ingredients.map(i => {
+    const emoji = getIngredientEmoji(i);
+    return `<li>${emoji ? `${i} ${emoji}` : i}</li>`;
+  }).join('');
+
+  const instructionsList = document.getElementById('recipe-instructions');
+  instructionsList.innerHTML = recipe.instructions.map(i => `<li>${i}</li>`).join('');
 }

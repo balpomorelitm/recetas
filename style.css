@@ -301,3 +301,168 @@ header h1 {
     margin-bottom: calc(var(--spacing-unit) * 4);
   }
 }
+
+/*
+:-----------------------------------------------------------------------------:
+:  [5] RECIPE DETAIL PAGE STYLES                                              :
+:-----------------------------------------------------------------------------:
+  Styles for the individual recipe page, creating a focused, elegant,
+  and readable layout.
+*/
+
+/* --- Main Page Container & Animation --- */
+.recipe-page-container {
+  padding: calc(var(--spacing-unit) * 4) calc(var(--spacing-unit) * 2);
+  /* A subtle animation for the whole page to fade in */
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Keyframe for the fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* --- Back Link --- */
+.back-link {
+  display: block;
+  max-width: 1000px;
+  margin: 0 auto calc(var(--spacing-unit) * 2);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+.back-link:hover {
+  color: var(--color-accent);
+}
+
+/* --- The Main Recipe Card/Box --- */
+.recipe-detail-card {
+  background: var(--color-surface);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-lifted), var(--shadow-border);
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: calc(var(--spacing-unit) * 6);
+  /* Animation for the card to slide up and fade in */
+  animation: slideUpIn 0.7s ease-out;
+}
+
+/* Keyframe for the card animation */
+@keyframes slideUpIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* --- Header & Meta Info --- */
+.recipe-header h1 {
+  font-family: var(--font-family-display);
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: calc(var(--spacing-unit) * 2);
+  color: var(--color-text-primary);
+}
+
+.recipe-meta {
+  display: flex;
+  justify-content: center;
+  gap: calc(var(--spacing-unit) * 4);
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  margin-bottom: calc(var(--spacing-unit) * 4);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+}
+
+/* --- Main Image --- */
+.recipe-main-image {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  margin-bottom: calc(var(--spacing-unit) * 5);
+}
+
+/* --- Recipe Body (Grid Layout) --- */
+.recipe-body {
+  display: grid;
+  grid-template-columns: 1fr; /* Default to 1 column for mobile */
+  gap: calc(var(--spacing-unit) * 6);
+}
+
+.recipe-body h2 {
+    font-family: var(--font-family-display);
+    font-size: 1.8rem;
+    color: var(--color-accent);
+    margin-bottom: calc(var(--spacing-unit) * 3);
+    padding-bottom: var(--spacing-unit);
+    border-bottom: 2px solid var(--color-border);
+}
+
+/* --- Ingredients List Styling --- */
+.ingredients-section ul {
+  list-style: none;
+  padding: 0;
+}
+.ingredients-section li {
+  padding: calc(var(--spacing-unit) * 1.5) 0;
+  border-bottom: 1px solid var(--color-border);
+  line-height: 1.5;
+}
+.ingredients-section li:last-child {
+  border-bottom: none;
+}
+
+/* --- Instructions List Styling --- */
+.instructions-section ol {
+  list-style: none;
+  counter-reset: instructions-counter;
+  padding: 0;
+}
+.instructions-section li {
+  counter-increment: instructions-counter;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-unit) * 2;
+  margin-bottom: calc(var(--spacing-unit) * 3);
+  line-height: 1.8;
+}
+/* Custom styled numbers for the instructions */
+.instructions-section li::before {
+  content: counter(instructions-counter);
+  font-family: var(--font-family-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--color-accent);
+  background-color: var(--color-background);
+  border-radius: 50%;
+  min-width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+
+/* --- Responsiveness: 2-column layout for larger screens --- */
+@media (min-width: 768px) {
+  .recipe-body {
+    /* 1 part for ingredients, 2 parts for instructions */
+    grid-template-columns: 1fr 2fr;
+  }
+  .recipe-header h1 {
+    font-size: 4rem;
+  }
+}
+
